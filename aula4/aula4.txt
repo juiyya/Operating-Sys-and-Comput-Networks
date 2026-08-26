@@ -1,0 +1,31 @@
+!Habilitar o modo privilegiado
+enable
+!Entrar no modo de configuração global
+configure terminal
+!Nomear o Switch
+hostname ASw-1
+
+!Habilitar senha para o modo privilegiado
+enable password xAw6k
+!Habilitar novamente com a senha criptografada 
+enable secret 6EBUp
+!Habilitar senha no modo console
+line console 0
+password xAw6k
+login
+!Habilitar modo telnet ou vty
+line vty 0 4
+password xAw6k
+login
+!Colocação da mensagem de alerta ao entrar na area restrita
+banner MOTD #AREA RESTRITA WARNING#
+!Configuração da VLAN 1
+interface VLAN 1
+ip address 10.10.10.100 255.255.255.0
+no shutdown
+!Criptografar as senhas 
+service password-encryption
+!Salvar da RAM para a NVRAM
+copy run start
+
+
